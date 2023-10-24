@@ -64,6 +64,7 @@ hisat2 -X Specie_hisat2_index -u input_rep2.fastq.gz | samtools view -@ 4 -bS - 
 ```
 
 ###  generate.bdg and .bw file
+bw file can be used in genome browser such as IGV.
 ```
 macs2 pipeup -f BAM --extsize 200 -i sample_rep1_sorted.bam -sample_rep1_pipeup.bdg
 macs2 pipeup -f BAM --extsize 200 -i sample_rep2_sorted.bam -sample_rep2_pipeup.bdg
@@ -88,7 +89,6 @@ macs2 callpeak -t sample_rep2_sorted.bam -c input_rep2_sorted.bam --name sample_
 ```
 
 ### chipr select peaks
-
 ```
 chipr -i /sample/rep1/macs2/withCtrl_narrow/sample_rep1_peaks.narrowpeak /sample/rep2/macs2/withCtrl_narrow/sample_rep2_peaks.narrowpeak -m 2 -o /sample/chipr/sample_chipr
 ```
@@ -96,18 +96,23 @@ chipr -i /sample/rep1/macs2/withCtrl_narrow/sample_rep1_peaks.narrowpeak /sample
 
 ### refind peak summit
 result from chipr do not contain peak summit, refind peak summit according to the bdg file.
+After chipr screening, there are still many peaks whose quality may not be very good. Select the peaks whose bdg signal of peak summit is greater than 40.
 ```
 python refind_peaksummit_v1.2.py -peak_file /sample/chipr/sample_chipr_all.bed -bdg_file sample_rep1_normalized.bdg -h_t 40 -o sample_chipr_all
 ```
 
 
 ### peak annotation
+run
+`python chipseq_gene_annotation_V1.2.py -h`
+ for detailed information
 ```
 python chipseq_gene_annotation_V1.2.py -peak_file sample_chipr_all_high_quality_peaks_threshold_40.narrowPeak -gff Specie.gff -o sample_chipr_all_high_quality_peaks_threshold_40_target_gene -distance 2000 -type1_method CDS
 ```
 
 ### GO and KEGG analysis of target genes
 ani_KEGG_info.csv is an internal use file downloaded from the KEGG website and organized into a custom format.
+obo file can be download from Gene Ootology website. Here is the link http://purl.obolibrary.org/obo/go/go-basic.obo.
 ```
 python GO_analysis_V1.py -target_gene_file sample_chipr_all_high_quality_peaks_threshold_40_target_gene.txt -gaf Specie.gaf -obo go-basic.obo -o sample_GO_result
 
