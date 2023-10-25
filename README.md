@@ -84,7 +84,7 @@ bedSort tem_sample_rep1_normalized.bdg > sample_rep1_normalized.bdg
 samtools faidx Specie.fasta
 # The first two columns of fasta.fai file is chromosome and chromosome size
 cut -f1,2 Specie.fasta.fai > chrom.sizes
-bedGraphToBigWig chrom.sizes bedGraphToBigWig 
+bedGraphToBigWig sample_rep1_normalized.bdg chrom.sizes sample_rep1_normalized.bw
 ```
 
 ### macs2 callpeak
