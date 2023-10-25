@@ -1,6 +1,7 @@
 # ChIPseq analysis pipeline
 
 ## Introduction to ChIPseq
+https://www.illumina.com/techniques/sequencing/dna-sequencing/chip-seq.html
 
 ## ChIPseq data analysis pipeline
 The analysis pipeline had written in snakemake. After installing the required package, you can change the sample name and input name in config.yaml and change the parameters you want to use. Then run the command
