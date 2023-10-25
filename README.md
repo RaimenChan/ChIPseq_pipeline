@@ -79,6 +79,12 @@ echo " Normalizing sample_rep1_pipeup.bdg with factor $scale"
 macs2 bdgopt -i sample_rep1_pipeup.bdg -m multiply -p $scale -o tem_tem_sample_rep1_normalized.bdg
 sed -n '2,${{p}}' tem_tem_sample_rep1_normalized.bdg > tem_sample_rep1_normalized.bdg
 bedSort tem_sample_rep1_normalized.bdg > sample_rep1_normalized.bdg
+
+# generate fasta.fai file
+samtools faidx Specie.fasta
+# The first two columns of fasta.fai file is chromosome and chromosome size
+cut -f1,2 Specie.fasta.fai > chrom.sizes
+bedGraphToBigWig chrom.sizes bedGraphToBigWig 
 ```
 
 ### macs2 callpeak
