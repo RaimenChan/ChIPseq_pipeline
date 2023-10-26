@@ -108,6 +108,12 @@ After chipr screening, there are still many peaks whose quality may not be very 
 python refind_peaksummit_v1.2.py -peak_file /sample/chipr/sample_chipr_all.bed -bdg_file sample_rep1_normalized.bdg -h_t 40 -o sample_chipr_all
 ```
 
+### correlation
+Calculate the correlation between two repeats using the normalized bdg file in the chipr_all peak region.
+```
+python correlation_V1.py -peak_file /sample/chipr/sample_chipr_all.bed -bdg_file1 sample_rep1_normalized.bdg -bdg_file2 sample_rep2_normalized.bdg -o sample
+```
+
 
 ### peak annotation
 run
