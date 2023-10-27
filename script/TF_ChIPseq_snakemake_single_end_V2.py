@@ -23,7 +23,7 @@
 # obo: /home/ruiwenchen/CreA_test_ChIPseq_pipeline_V2/reference/go-basic.obo
 # KEGG_relation: /home/ruiwenchen/CreA_test_ChIPseq_pipeline_V2/reference/ani_KEGG_info.csv
 
-configfile: "./config.yaml"
+configfile: "./config_V2.yaml"
 
 outputdir = config["output"]
 FASTQdir = config["FASTQ"]
