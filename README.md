@@ -19,7 +19,7 @@ conda deactivate
 conda activate TF_ChIPseq_pipeline
 
 conda install -c bioconda -y snakemake=7.32.4
-conda install -c bioconda fastaqc
+conda install -c bioconda fastqc
 conda install multiqc
 conda install -c bioconda -y hisat2=2.2.1
 conda install samtools=1.18
