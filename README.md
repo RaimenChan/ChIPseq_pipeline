@@ -57,10 +57,10 @@ multiqc FastQC -f -o MultiQC MultiQC/logs/mutiqc.log 2>&1
 ```
 hisat2-build /genome_info/Specie.fasta /genome_info/Specie_hisat2_index 
 ## double end sequencing use hisat2 -X Specie_hisat2_index -1 sample_rep1_1.fastq.gz -2 sample_rep1_2.fastq.gz instead
-hisat2 -X Specie_hisat2_index -u sample_rep1.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o sample_rep1_sorted.bam
-hisat2 -X Specie_hisat2_index -u sample_rep2.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o sample_rep2_sorted.bam
-hisat2 -X Specie_hisat2_index -u input_rep1.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o input_rep1_sorted.bam
-hisat2 -X Specie_hisat2_index -u input_rep2.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o input_rep2_sorted.bam
+hisat2 --trim5 8 -x Specie_hisat2_index -U sample_rep1.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o sample_rep1_sorted.bam
+hisat2 --trim5 8 -x Specie_hisat2_index -U sample_rep2.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o sample_rep2_sorted.bam
+hisat2 --trim5 8 -x Specie_hisat2_index -U input_rep1.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o input_rep1_sorted.bam
+hisat2 --trim5 8 -x Specie_hisat2_index -U input_rep2.fastq.gz | samtools view -@ 4 -bS - | samtools sort -@ 4  -O bam -o input_rep2_sorted.bam
 
 ```
 
