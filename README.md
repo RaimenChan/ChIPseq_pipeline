@@ -43,6 +43,7 @@ conda install chip-r
 conda install openpyxl
 conda install goatools
 conda install seaborn
+conda install matplotlib
 ```
 
 
@@ -109,18 +110,18 @@ python refind_peaksummit_v1.2.py -peak_file /sample/chipr/sample_chipr_all.bed -
 ```
 
 ### correlation
-Calculate the correlation between two repeats using the normalized bdg file in the chipr_all peak region.
+Calculate the correlation between n repeats using the normalized bdg file in the chipr_all peak region.
 ```
-python correlation_V1.py -peak_file /sample/chipr/sample_chipr_all.bed -bdg_file1 sample_rep1_normalized.bdg -bdg_file2 sample_rep2_normalized.bdg -o sample
+python correlation_V2.py -peak_file /sample/chipr/sample_chipr_all.bed -o sample -bdg_files sample_rep1_normalized.bdg sample_rep2_normalized.bdg 
 ```
 
 
 ### peak annotation
 run
-`python chipseq_gene_annotation_V1.2.py -h`
+`python chipseq_gene_annotation_V2.1.py -h`
  for detailed information
 ```
-python chipseq_gene_annotation_V1.2.py -peak_file sample_chipr_all_high_quality_peaks_threshold_40.narrowPeak -gff Specie.gff -o sample_chipr_all_high_quality_peaks_threshold_40_target_gene -distance 2000 -type1_method CDS
+python chipseq_gene_annotation_V2.1.py -peak_file sample_chipr_all_high_quality_peaks_threshold_40.narrowPeak -gff Specie.gff -o sample_chipr_all_high_quality_peaks_threshold_40_target_gene -distance1 2000 -distance2 1000 -type1_method ATG
 ```
 
 ### GO and KEGG analysis of target genes
